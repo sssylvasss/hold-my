@@ -1,0 +1,287 @@
+.theme {
+  --primary-bg: #fff7f9;
+  --secondary-bg: #fefefe;
+  --accent-color: #ff9eb5;
+  --accent-secondary: #b5c9ff;
+  --text-color: #4a4a4a;
+  --error-color: #ff8c8c;
+  --border-color: #ffe3e8;
+  --shadow-color: rgba(255, 158, 181, 0.15);
+  --border-radius: 12px;
+  --spacing: 32px;
+  --animation-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes floatingDots {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 5px var(--shadow-color); }
+  50% { box-shadow: 0 0 15px var(--shadow-color); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.container {
+  min-height: 100vh;
+  background-color: var(--primary-bg);
+  background-image: 
+    radial-gradient(8px 8px at 20% 30%, var(--accent-color) 50%, transparent 50%),
+    radial-gradient(8px 8px at 80% 20%, var(--accent-secondary) 50%, transparent 50%),
+    radial-gradient(8px 8px at 40% 80%, var(--accent-color) 50%, transparent 50%),
+    radial-gradient(8px 8px at 70% 70%, var(--accent-secondary) 50%, transparent 50%);
+  padding: var(--spacing);
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    var(--accent-secondary),
+    var(--accent-color)
+  );
+  opacity: 0.5;
+  animation: pulseGlow 3s infinite;
+}
+
+.title {
+  color: var(--text-color);
+  font-size: 32px;
+  font-weight: 500;
+  margin: 0 0 calc(var(--spacing) * 2) 0;
+  text-align: center;
+  letter-spacing: 0.05em;
+  position: relative;
+  padding-bottom: var(--spacing);
+  display: inline-block;
+  transition: transform 0.3s var(--animation-bounce);
+}
+
+.title:hover {
+  transform: scale(1.05);
+}
+
+.title::before,
+.title::after {
+  content: "✿";
+  position: absolute;
+  color: var(--accent-color);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.title::before {
+  left: -30px;
+  animation: floatingDots 3s infinite ease-in-out;
+}
+
+.title::after {
+  right: -30px;
+  animation: floatingDots 3s infinite ease-in-out 0.5s;
+}
+
+.title:hover::before,
+.title:hover::after {
+  animation: wiggle 0.5s infinite;
+  color: var(--accent-secondary);
+}
+
+.cameraContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing);
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing);
+  background: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--border-color);
+  position: relative;
+  transition: all 0.3s var(--animation-bounce);
+}
+
+.cameraContainer:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: var(--accent-color);
+}
+
+.cameraContainer::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 1px dashed var(--border-color);
+  border-radius: calc(var(--border-radius) - 4px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.cameraContainer:hover::before {
+  border-style: solid;
+  border-color: var(--accent-secondary);
+  animation: pulseGlow 2s infinite;
+}
+
+.videoPreview {
+  width: 100%;
+  max-width: 800px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  margin: 0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.videoPreview::after {
+  content: "◕‿◕";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: var(--accent-color);
+  opacity: 0.7;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.videoPreview:hover::after {
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0;
+}
+
+.capturedImage {
+  width: 100%;
+  max-width: 800px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  margin: 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.capturedImage:hover {
+  transform: scale(1.02);
+  border-color: var(--accent-color);
+}
+
+.button {
+  padding: calc(var(--spacing) / 2) var(--spacing);
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s var(--animation-bounce);
+  margin: calc(var(--spacing) / 2) auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: "♡";
+  margin-right: 8px;
+  transition: transform 0.3s var(--animation-bounce);
+}
+
+.button::after {
+  content: "✧";
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background: var(--accent-secondary);
+  transform: translateY(-2px);
+  padding-right: calc(var(--spacing) * 1.2);
+}
+
+.button:hover::before {
+  transform: scale(1.4) rotate(360deg);
+}
+
+.button:hover::after {
+  animation: sparkle 0.8s infinite;
+  opacity: 1;
+  right: 12px;
+}
+
+.button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.error {
+  color: var(--error-color);
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: calc(var(--spacing) / 2);
+  background: rgba(255, 140, 140, 0.1);
+  border: 2px solid var(--error-color);
+  border-radius: var(--border-radius);
+  margin: calc(var(--spacing) / 2) 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+.error:hover {
+  transform: scale(1.02);
+}
+
+.error::before {
+  content: "(｡•́︿•̀｡)";
+  color: var(--error-color);
+  transition: transform 0.3s ease;
+}
+
+.error:hover::before {
+  animation: wiggle 1s infinite;
+} 

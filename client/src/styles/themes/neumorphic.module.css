@@ -1,0 +1,108 @@
+.theme {
+  --primary-bg: #e0e5ec;
+  --secondary-bg: #e0e5ec;
+  --accent-color: #4a90e2;
+  --text-color: #2d3436;
+  --error-color: #e74c3c;
+  --shadow-dark: #a3b1c6;
+  --shadow-light: #ffffff;
+  --border-radius: 15px;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: var(--primary-bg);
+  padding: 40px 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.title {
+  color: var(--text-color);
+  font-size: 42px;
+  font-weight: 600;
+  margin: 0 0 40px 0;
+  text-align: center;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  background: var(--primary-bg);
+  box-shadow: 
+    8px 8px 15px var(--shadow-dark),
+    -8px -8px 15px var(--shadow-light);
+}
+
+.cameraContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background: var(--primary-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 
+    8px 8px 15px var(--shadow-dark),
+    -8px -8px 15px var(--shadow-light);
+}
+
+.videoPreview {
+  width: 100%;
+  max-width: 800px;
+  border-radius: var(--border-radius);
+  margin: 0;
+  box-shadow: 
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+}
+
+.capturedImage {
+  width: 100%;
+  max-width: 800px;
+  border-radius: var(--border-radius);
+  margin: 0;
+  box-shadow: 
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+}
+
+.button {
+  padding: 15px 30px;
+  background: var(--primary-bg);
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    6px 6px 12px var(--shadow-dark),
+    -6px -6px 12px var(--shadow-light);
+}
+
+.button:hover {
+  box-shadow: 
+    4px 4px 8px var(--shadow-dark),
+    -4px -4px 8px var(--shadow-light);
+  transform: translateY(1px);
+}
+
+.button:active {
+  box-shadow: 
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+  transform: translateY(2px);
+}
+
+.error {
+  color: var(--error-color);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 16px;
+  padding: 15px;
+  background: var(--primary-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+} 
